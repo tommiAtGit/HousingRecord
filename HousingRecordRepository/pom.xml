@@ -13,18 +13,18 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <parent>
   	<groupId>com.myProjects.HousingRecord</groupId>
   	<artifactId>HousingRecod-parent</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
   	<relativePath>../HousingRecod-parent</relativePath>
   </parent>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.myProjects.HousingRecord.Domain</groupId>
+  		<artifactId>HousingRecodDomain</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  		<type>pom</type>
+  	</dependency>
+  </dependencies>
 </project>
