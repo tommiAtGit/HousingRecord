@@ -4,7 +4,6 @@
 
   <groupId>com.myProjects.HousingRecord.Controler</groupId>
   <artifactId>HousingRecordControler</artifactId>
-  <packaging>pom</packaging>
 
   <name>HousingRecordControler</name>
   <url>http://maven.apache.org</url>
@@ -15,10 +14,16 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+    	<groupId>com.myProjects.HousingRecord.Domain</groupId>
+    	<artifactId>HousingRecodDomain</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<type>pom</type>
+    </dependency>
+    <dependency>
+    	<groupId>com.myProjects.HousingRecord.Repository</groupId>
+    	<artifactId>HousingRecordRepository</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<type>pom</type>
     </dependency>
   </dependencies>
   <parent>

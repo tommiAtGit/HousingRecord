@@ -4,7 +4,6 @@
 
   <groupId>com.myProjects.HousingRecord.Repository</groupId>
   <artifactId>HousingRecordRepository</artifactId>
-  <packaging>pom</packaging>
 
   <name>HousingRecordRepository</name>
   <url>http://maven.apache.org</url>
@@ -24,7 +23,6 @@
   		<groupId>com.myProjects.HousingRecord.Domain</groupId>
   		<artifactId>HousingRecodDomain</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-  		<type>pom</type>
   	</dependency>
   </dependencies>
 </project>

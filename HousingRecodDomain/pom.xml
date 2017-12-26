@@ -4,7 +4,6 @@
 
   <groupId>com.myProjects.HousingRecord.Domain</groupId>
   <artifactId>HousingRecodDomain</artifactId>
-  <packaging>pom</packaging>
 
   <name>HousingRecodDomain</name>
   <url>http://maven.apache.org</url>
