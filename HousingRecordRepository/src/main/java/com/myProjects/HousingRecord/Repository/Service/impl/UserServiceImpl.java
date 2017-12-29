@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired UserDao userDao;
 	
+	
 	@Transactional
 	public UserInformation userLogIn(String userName, String password) {
 		UserInformation userInfo = null;

@@ -2,8 +2,7 @@ package com.myProjects.HousingRecord.Repository.DAO;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,15 +11,18 @@ import com.myProjects.HousingRecord.Domain.UserInformation;
 import com.myProjects.HousingRecord.Repository.DAOIF.UserDao;
 
 @Transactional
-public class UserDAOImpl implements UserDao {
+public class UserDAOImpl extends DAOBase implements UserDao {
 
-	@PersistenceContext
-	private EntityManager em;
-	
+
+	public UserDAOImpl(String persistenceUnit) {
+		super(persistenceUnit);
+	}
+
 	public UserAddress addUser(UserAddress userAddress) {
 
 		try {
 			em.persist(userAddress);
+			em.getTransaction().commit();
 		}
 		catch(Exception ex) {
 			//Do some thing
@@ -31,10 +33,13 @@ public class UserDAOImpl implements UserDao {
 	    
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<UserInformation> getAllUsers() {
-		// TODO Auto-generated method stub
+		
+		Query q = em.createQuery("Select u From UserInfo UInfo");
+		List<UserInformation> userInfoList = q.getResultList();
 		  
-		return null;
+		return userInfoList;
 	}
 
 	public UserAddress getUser(String userName, String password) {
