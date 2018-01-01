@@ -8,11 +8,11 @@ import com.myProjects.HousingRecord.Domain.UserInformation;
 
 public interface UserDao {
 	
-	  UserAddress addUser(UserAddress userAddress);
+	  	UserInformation addUser(UserInformation userInfo);
 
 	    List<UserInformation> getAllUsers();
 
-	    UserAddress getUser(String userName, String password);
+	    UserInformation getUser(String userName, String password);
 
 	    UserInformation removeUser(double userId);
 

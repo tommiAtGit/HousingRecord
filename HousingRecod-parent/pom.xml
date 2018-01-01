@@ -50,9 +50,9 @@
 
   <packaging>pom</packaging>
   <modules>
-  	<module>../HousinRecord_web</module>
   	<module>../HousingRecodDomain</module>
   	<module>../HousingRecordControler</module>
   	<module>../HousingRecordRepository</module>
+  	<module>../HousinRecord_web</module>
   </modules>
 </project>

@@ -14,10 +14,14 @@ import com.myProjects.HousingRecord.Repository.Service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired UserDao userDao;
+	private UserDao userDao;
+	
+	@Autowired
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
+	}
 	
 	
-	@Transactional
 	public UserInformation userLogIn(String userName, String password) {
 		UserInformation userInfo = null;
 		
@@ -30,11 +34,18 @@ public class UserServiceImpl implements UserService {
 			
 		return userInfo;
 	}
-	@Transactional
+	
 	public List<UserInformation> getAllUsers() {
 		
-		List<UserInformation> userLst = userDao.getAllUsers();
+		List<UserInformation> userLst = null;
 		
+		if (userDao != null) {
+			userLst = userDao.getAllUsers();
+		}
+		else {
+			//TODO: Add some kind of loggin here
+			System.out.println("Error: UserDAO not found");
+		}
 		return userLst;
 	}
 

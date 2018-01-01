@@ -18,8 +18,23 @@
   	<version>0.0.1-SNAPSHOT</version>
   	<relativePath>../HousingRecod-parent</relativePath>
   </parent>
- 
+
   <dependencies>
+  
+  <dependency>
+    <groupId>org.hibernate.javax.persistence</groupId>
+    <artifactId>hibernate-jpa-2.1-api</artifactId>
+    <version>1.0.0.Final</version>
+</dependency>
+
+
+  	 <dependency>
+    	<groupId>javax</groupId>
+    	<artifactId>javaee-api</artifactId>
+    	<version>7.0</version>
+    	<scope>provided</scope>
+	</dependency>
+  	
   	<dependency>
     	<groupId>org.apache.openjpa</groupId>
     	<artifactId>openjpa</artifactId>
