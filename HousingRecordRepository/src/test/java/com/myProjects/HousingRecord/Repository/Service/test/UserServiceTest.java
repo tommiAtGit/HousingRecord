@@ -20,17 +20,19 @@ import com.myProjects.HousingRecord.Repository.Service.impl.UserServiceImpl;
 
 public class UserServiceTest {
 
-	private UserService useService;
+	private UserService userService;
+	private UserDao userD;
 	
 	@Before
 	public void setUp() throws Exception {
 		
-		UserDao userD = new UserDAOImpl("HOUSINGRECORD_TEST");
-		useService = new UserServiceImpl(userD);
+		userD = new UserDAOImpl("HOUSINGRECORD");
+		userService = new UserServiceImpl(userD);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		
 	}
 
 	@Test
@@ -39,14 +41,44 @@ public class UserServiceTest {
 		
 		UserAddress Actual = new UserAddress();
 		Actual.setId(-1);
-		Actual = useService.addUser(Expected);
+		Actual = userService.addUser(Expected);
 		
 		assertNotNull(Actual);
 		assertNotNull(Actual.getId());
-		assertTrue("Id of the addes item:" + Actual.getId(), Actual.getId() != -1); 
+		assertTrue("Id of the addes item:" + Actual.getId(), Actual.getId() != -1);
+		
+		System.out.println("*****");
+		System.out.println("Id value" + Actual.getId());
+		System.out.println("*****");
+		
+		List<UserAddress> actualUsers =  userService.getAllUsers();
+		System.out.println("List size:" + actualUsers.size());
+		assertTrue("some thing missing", actualUsers.size() == 1);
+		
 		
 	}
+	@Ignore
+	@Test
+	public void testGetUser() {
+		
+		UserAddress Expected = this.createTestUser();
+		UserAddress Actual = new UserAddress();
+		Actual.setId(-1);
+		Actual = userService.addUser(Expected);
+		
+		assertNotNull(Actual);
+		assertNotNull(Actual.getId());
+		assertTrue("Id of the addes item:" + Actual.getId(), Actual.getId() != -1);
+		
+		System.out.println("*****");
+		System.out.println("Id value" + Actual.getId());
+		System.out.println("*****");
 	
+		UserInformation userInfo = userService.getUser(Expected.getUserInformation().getUserName(), Expected.getUserInformation().getPassWord());
+		assertNotNull(userInfo);
+	}
+	
+	@Ignore
 	@Test
 	public void getAllUsersTest() {
 		int actualUserCount = 4;
@@ -54,14 +86,14 @@ public class UserServiceTest {
 		List<UserAddress> expectedUsers = this.CreateTestUsers();
 		
 		while (itemCount < actualUserCount) {
-			UserAddress initalUsers = useService.addUser(expectedUsers.get(itemCount));
+			UserAddress initalUsers = userService.addUser(expectedUsers.get(itemCount));
 			assertNotNull(initalUsers);
 			assertNotNull(initalUsers.getId());
 			System.out.println("Id value: "+initalUsers.getId());
 			itemCount++;
 		}
 		
-		List<UserInformation> actualUsers =  useService.getAllUsers();
+		List<UserAddress> actualUsers =  userService.getAllUsers();
 		assertTrue("some thing missing", actualUsers.size() != actualUserCount);
 		
 	}

@@ -16,5 +16,8 @@ public class DAOBase {
 		em = factory.createEntityManager();
 		
 	}
+	public void closeEntityFactory() {
+		factory.close();
+	}
 	
 }

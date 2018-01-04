@@ -4,13 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.myProjects.HousingRecord.Domain.UserAddress;
 import com.myProjects.HousingRecord.Domain.UserInformation;
 import com.myProjects.HousingRecord.Repository.DAOIF.UserDao;
 
-@Transactional
+//@Transactional
 public class UserDAOImpl extends DAOBase implements UserDao {
 
 
@@ -18,7 +16,7 @@ public class UserDAOImpl extends DAOBase implements UserDao {
 		super(persistenceUnit);
 	}
 
-	public UserInformation addUser(UserInformation userAddress) {
+	public UserAddress addUser(UserAddress userAddress) {
 
 		if (userAddress != null) {
 			try {
@@ -27,6 +25,7 @@ public class UserDAOImpl extends DAOBase implements UserDao {
 				em.persist(userAddress);
 				em.getTransaction().commit();
 				em.close();
+				
 			}
 			catch(Exception ex) {
 				//TODO: Replace me with some kind of logging
@@ -40,24 +39,20 @@ public class UserDAOImpl extends DAOBase implements UserDao {
 		}
 	    
 	}
-
-	public UserAddress addUser(UserAddress userAddress) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@SuppressWarnings("unchecked")
-	public List<UserInformation> getAllUsers() {
+	public List<UserAddress> getAllUsers() {
 		
-		Query q = em.createQuery("Select u From UserInformation u");
-		List<UserInformation> userInfoList = q.getResultList();
+		Query q = em.createQuery("SELECT u FROM UserAddress u JOIN u.userInformation i");
+		
+		List<UserAddress> userAddressList = q.getResultList();
 		  
-		return userInfoList;
+		return userAddressList;
 	}
 
 	public UserInformation getUser(String userName, String password) {
 		
-		Query q  = em.createQuery("Select u From UserInformation u where u.userName :userName AND u.passWord = :password");
+		Query q  = em.createQuery("Select u From UserInformation u where u.userName = :userName AND u.passWord = :password");
 		
 		UserInformation userInfo  = (UserInformation) q.getSingleResult(); 
 		
@@ -73,6 +68,5 @@ public class UserDAOImpl extends DAOBase implements UserDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

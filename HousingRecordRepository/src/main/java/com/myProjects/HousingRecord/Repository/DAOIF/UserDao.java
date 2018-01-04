@@ -8,9 +8,9 @@ import com.myProjects.HousingRecord.Domain.UserInformation;
 
 public interface UserDao {
 	
-	  	UserInformation addUser(UserInformation userInfo);
+	  	UserAddress addUser(UserAddress userInfo);
 
-	    List<UserInformation> getAllUsers();
+	  	List<UserAddress> getAllUsers();
 
 	    UserInformation getUser(String userName, String password);
 

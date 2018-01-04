@@ -35,9 +35,9 @@ public class UserServiceImpl implements UserService {
 		return userInfo;
 	}
 	
-	public List<UserInformation> getAllUsers() {
+	public List<UserAddress> getAllUsers() {
 		
-		List<UserInformation> userLst = null;
+		List<UserAddress> userLst = null;
 		
 		if (userDao != null) {
 			userLst = userDao.getAllUsers();
@@ -49,14 +49,14 @@ public class UserServiceImpl implements UserService {
 		return userLst;
 	}
 
-	public UserAddress getUser(String userName, String password) {
+	public UserInformation getUser(String userName, String password) {
 		
-		UserAddress userAdr = null;
+		UserInformation userInfo = null;
 		if (!userName.equals(null)|| !password.equals(null)) {
-			userAdr = userDao.getUser(userName, password);
+			userInfo = userDao.getUser(userName, password);
 		}
 		
-		return userAdr;
+		return userInfo;
 	}
 
 	public UserAddress addUser(UserAddress theUser) {
