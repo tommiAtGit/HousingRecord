@@ -17,8 +17,8 @@ public class UserInformation implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private double id = 0;
-	private String userName;
-	private String passWord;
+	private String UserName;
+	private String UserPwd;
 	private int messageNotice;
 	//private CustomerLevel customerLevel;
 	
@@ -40,21 +40,21 @@ public class UserInformation implements Serializable {
 
 	@Column(name="UserName")  
 	public String getUserName() {
-		return userName;
+		return UserName;
 	}
 	
 	
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.UserName = userName;
 	}
 
-	@Column(name="PassWord")  
+	@Column(name="UserPwd")  
 	public String getPassWord() {
-		return passWord;
+		return UserPwd;
 	}
 
 	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+		this.UserPwd = passWord;
 	}
 
 	/*@Column(name="CustomerLevel")  

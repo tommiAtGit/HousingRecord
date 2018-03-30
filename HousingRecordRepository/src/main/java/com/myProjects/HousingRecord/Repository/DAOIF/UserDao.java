@@ -14,7 +14,9 @@ public interface UserDao {
 
 	    UserInformation getUser(String userName, String password);
 
-	    UserInformation removeUser(double userId);
+	    void removeUser(UserAddress userAddress);
 
 	    UserInformation userLogin(String userName, String password);
+	    
+	    
 }

@@ -68,13 +68,12 @@ public class UserServiceImpl implements UserService {
 		return userAddress;	
 	}
 
-	public UserInformation removeUser(double userId) {
+	public void removeUser(UserAddress userAddress) {
 		
-		UserInformation userInfo = null;
-		if(userId >= 0 ) {
-			userInfo = userDao.removeUser(userId);
+		if(userAddress != null ) {
+			userDao.removeUser(userAddress);
 		}
-		return userInfo;
+		
 	}
 
 }

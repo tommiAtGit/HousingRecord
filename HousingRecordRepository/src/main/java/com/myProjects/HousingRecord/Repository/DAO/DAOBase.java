@@ -17,7 +17,7 @@ public class DAOBase {
 		
 	}
 	public void closeEntityFactory() {
-		factory.close();
+		//factory.close();
 	}
 	
 }

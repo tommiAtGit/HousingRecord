@@ -11,7 +11,7 @@ public interface UserService {
 	public List<UserAddress>  getAllUsers();
 	public UserInformation getUser(String userName, String password);
 	public UserAddress addUser(UserAddress theUser);
-	public UserInformation removeUser(double userId);
+	public void removeUser(UserAddress userAddress);
 	
 	
 	

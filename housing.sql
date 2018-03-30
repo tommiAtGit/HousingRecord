@@ -31,8 +31,8 @@ CREATE TABLE UserAddress
 CREATE TABLE UserInformation
 (
 	Id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	UserName        CHAR(8)	    NOT NULL,
-	UserPwd        	CHAR(10)	NOT NULL,
+	UserName        CHAR(25)	    NOT NULL,
+	UserPwd        	CHAR(25)	NOT NULL,
 	CustomerLevelId       INT,
 	UserAddressId		INT,
 	MessageNotice		INT(1)		NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE UserElectricity
 )
 ENGINE=INNODB;
 
-CREATE TABLE USERAQUA
+CREATE TABLE UserAqua
 (
 	Id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	UserId			INT UNSIGNED NOT NULL,
@@ -108,17 +108,6 @@ CREATE TABLE USERAQUA
 )
 ENGINE=INNODB;
 
-CREATE TABLE USERDEFECT
-(
-	Id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	UserId			INT UNSIGNED NOT NULL,
-	PRIMARY KEY (Id),
-	DefectText 		CHAR(255)    NOT NULL,
-	INDEX user_ind(UserId),
-            FOREIGN KEY (UserId) REFERENCES UserInformation(Id)
-              ON DELETE NO ACTION
-              ON UPDATE NO ACTION
-)
 -- -----------------------------------------------------------------------------------
 -- ************** Populate needed database tables with testdata *********************
 -- -----------------------------------------------------------------------------------
