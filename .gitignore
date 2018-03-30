@@ -27,3 +27,5 @@ target/
 *.tar
 *.zip
 *.war
+/.metadata/
+/.recommenders/
