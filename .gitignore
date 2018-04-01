@@ -1,0 +1,12 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.log
+*.iml
+.idea/
+.eclipse
+.metadata
+.recommenders
