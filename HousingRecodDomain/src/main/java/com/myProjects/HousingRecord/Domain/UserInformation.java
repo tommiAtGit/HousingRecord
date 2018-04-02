@@ -16,7 +16,7 @@ public class UserInformation implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private double id = 0;
+	private long id = 0;
 	private String UserName;
 	private String UserPwd;
 	private int messageNotice;
@@ -29,12 +29,12 @@ public class UserInformation implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	public double getId() {
+	@Column(name = "id", unique = true, nullable = false)
+	public long getId() {
 		return id;
 	}
 
-	public void setId(double id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -1,5 +1,6 @@
 package com.myProjects.HousingRecord.Repository.Service.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -18,7 +19,7 @@ import com.myProjects.HousingRecord.Repository.DAOIF.UserDao;
 import com.myProjects.HousingRecord.Repository.Service.UserService;
 import com.myProjects.HousingRecord.Repository.Service.impl.UserServiceImpl;
 
-@Ignore
+
 public class UserServiceTest {
 
 	private UserService userService;
@@ -27,7 +28,7 @@ public class UserServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		userD = new UserDAOImpl("HOUSINGRECORD");
+		userD = new UserDAOImpl("HOUSINGRECORD_TEST");
 		userService = new UserServiceImpl(userD);
 	}
 
@@ -48,13 +49,17 @@ public class UserServiceTest {
 		assertNotNull(Actual.getId());
 		assertTrue("Id of the addes item:" + Actual.getId(), Actual.getId() != -1);
 		
-		System.out.println("*****");
-		System.out.println("Id value" + Actual.getId());
-		System.out.println("*****");
+		
+		UserAddress SecondActual = new UserAddress();
+		SecondActual.setId(-1);
+		SecondActual = userService.addUser(this.createTestUser());
+		
+		assertNotNull(SecondActual);
+		assertNotNull(SecondActual.getId());
+		assertTrue("Id of the addes item:" + SecondActual.getId(), SecondActual.getId() != -1);
 		
 		List<UserAddress> actualUsers =  userService.getAllUsers();
-		System.out.println("List size:" + actualUsers.size());
-		assertTrue("some thing missing", actualUsers.size() < 1);
+		assertTrue("some thing missing", actualUsers.size()>1);
 		
 		
 	}
@@ -70,12 +75,12 @@ public class UserServiceTest {
 		assertNotNull(Actual.getId());
 		assertTrue("Id of the addes item:" + Actual.getId(), Actual.getId() != -1);
 		
-		System.out.println("*****");
-		System.out.println("Id value" + Actual.getId());
-		System.out.println("*****");
 	
 		UserInformation userInfo = userService.getUser(Expected.getUserInformation().getUserName(), Expected.getUserInformation().getPassWord());
 		assertNotNull(userInfo);
+		assertEquals(userInfo.getPassWord(), Expected.getUserInformation().getPassWord());
+		assertEquals(userInfo.getUserName(), Expected.getUserInformation().getUserName());
+		
 	}
 	
 	
@@ -89,15 +94,35 @@ public class UserServiceTest {
 			UserAddress initalUsers = userService.addUser(expectedUsers.get(itemCount));
 			assertNotNull(initalUsers);
 			assertNotNull(initalUsers.getId());
-			System.out.println("Id value: "+initalUsers.getId());
 			itemCount++;
 		}
 		
 		List<UserAddress> actualUsers =  userService.getAllUsers();
-		assertTrue("some thing missing", actualUsers.size() != actualUserCount);
+		assertEquals("some thing missing", actualUsers.size(), actualUserCount);
 		
 	}
 	
+	@Test
+	public void deleteUserTest(){
+		
+		UserAddress Expected = this.createTestUser();
+		UserAddress Actual = new UserAddress();
+		Actual.setId(-1);
+		Actual = userService.addUser(Expected);
+		
+		assertNotNull(Actual);
+		assertNotNull(Actual.getId());
+		assertTrue("Id of the addes item:" + Actual.getId(), Actual.getId() != -1);
+		
+		userService.removeUser(Actual);
+		
+		//Test the user removal
+		UserInformation userInfo = userService.getUser(Expected.getUserInformation().getUserName(), Expected.getUserInformation().getPassWord());
+		assertTrue(userInfo == null);
+		
+		
+		
+	}
 	private UserAddress createTestUser() {
 		
 		UserAddress userAddress = new UserAddress();

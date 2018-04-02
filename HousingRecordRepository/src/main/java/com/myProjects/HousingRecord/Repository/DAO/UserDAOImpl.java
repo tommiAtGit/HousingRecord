@@ -55,7 +55,7 @@ public class UserDAOImpl extends DAOBase implements UserDao {
 		}
 		catch(Exception ex) {
 			//TODO: Replace me with some kind of logging
-			System.out.println(this.getClass().getName() + "-- getUser(): Error occured: " + ex.getMessage());
+			System.out.println(this.getClass().getName() + "-- getAllUsers(): Error occured: " + ex.getMessage());
 			ex.printStackTrace();  
 		}
 		return userAddressList;
@@ -65,7 +65,11 @@ public class UserDAOImpl extends DAOBase implements UserDao {
 		
 		UserInformation userInfo=null;
 		
+		
 		Query q  = em.createQuery("Select u From UserInformation u where u.userName = :userName AND u.passWord = :password");
+		q.setParameter("userName", userName);
+		q.setParameter("password", password);
+		
 		try {
 			userInfo  = (UserInformation) q.getSingleResult();	
 		}

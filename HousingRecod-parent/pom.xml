@@ -54,6 +54,5 @@
   	<module>../HousingRecordControler</module>
   	<module>../HousingRecordRepository</module>
   	<module>../HousinRecord_web</module>
-  	<module>../HousingRecordApplication</module>
   </modules>
 </project>

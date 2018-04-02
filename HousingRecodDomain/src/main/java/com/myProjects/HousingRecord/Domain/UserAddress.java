@@ -74,7 +74,6 @@ public class UserAddress implements Serializable {
 	}
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
 	public UserInformation getUserInformation() {
 		return userInformation;
 	}

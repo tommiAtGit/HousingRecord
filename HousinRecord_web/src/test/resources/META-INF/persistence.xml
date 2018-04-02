@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="HOUSINGRECORD" transaction-type="RESOURCE_LOCAL">
-	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<description>For mySQL database</description>
 		<class>com.myProjects.HousingRecord.Domain.UserAddress</class>
 		<class>com.myProjects.HousingRecord.Domain.UserInformation</class>
 		<class>com.myProjects.HousingRecord.Domain.HousingCooperative</class>		
@@ -21,7 +21,7 @@
 	
 	<!--persitence for HSQLDB  -->
 	<persistence-unit name="HOUSINGRECORD_TEST" transaction-type="RESOURCE_LOCAL">
-	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<description>For HSQLDB</description>
 		<class>com.myProjects.HousingRecord.Domain.UserAddress</class>
 		<class>com.myProjects.HousingRecord.Domain.UserInformation</class>
 		<class>com.myProjects.HousingRecord.Domain.HousingCooperative</class>		
