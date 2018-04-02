@@ -3,6 +3,7 @@
 .project
 .settings/
 target/
+servers/
 
 # Some files to ignore
 # Compiled source #
