@@ -16,7 +16,7 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.DAO.HousingCooperativeDAO#addHousingCooperative(com.myProjects.HousingRecord.Domain.HousingCooperative)
 	 */
-	@Override
+
 	public HousingCooperative addHousingCooperative(HousingCooperative cooperative) {
 
 		if (cooperative != null) {
@@ -45,7 +45,7 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.DAO.HousingCooperativeDAO#getHousingCooperatives()
 	 */
-	@Override
+
 	@SuppressWarnings("unchecked")
 	public List<HousingCooperative> getHousingCooperatives() {
 		
@@ -66,7 +66,6 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.DAO.HousingCooperativeDAO#getHousingCooperative(java.lang.String)
 	 */
-	@Override
 	public HousingCooperative getHousingCooperative(String address) {
 		
 		HousingCooperative hc=null;
@@ -89,7 +88,7 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.DAO.HousingCooperativeDAO#removeHousingCooperative(com.myProjects.HousingRecord.Domain.HousingCooperative)
 	 */
-	@Override
+
 	public void removeHousingCooperative(HousingCooperative cooperative) {
 		
 		if(cooperative != null) {

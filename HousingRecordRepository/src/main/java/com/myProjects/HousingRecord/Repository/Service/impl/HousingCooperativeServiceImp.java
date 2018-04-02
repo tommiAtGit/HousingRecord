@@ -22,7 +22,7 @@ public class HousingCooperativeServiceImp implements HousingCooperativeService{
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.Service.impl.HousingCooperativeService#addHousingCooperative(com.myProjects.HousingRecord.Domain.HousingCooperative)
 	 */
-	@Override
+	
 	public HousingCooperative addHousingCooperative(HousingCooperative cooperative) {
 		
 		HousingCooperative hc = null;
@@ -35,7 +35,7 @@ public class HousingCooperativeServiceImp implements HousingCooperativeService{
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.Service.impl.HousingCooperativeService#getHousingCooperatives()
 	 */
-	@Override
+	
 	public List<HousingCooperative> getHousingCooperatives(){
 		List<HousingCooperative> hcs = null;
 		hcs = hcDAO.getHousingCooperatives();
@@ -45,7 +45,7 @@ public class HousingCooperativeServiceImp implements HousingCooperativeService{
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.Service.impl.HousingCooperativeService#getHousingCooperative(java.lang.String)
 	 */
-	@Override
+
 	public HousingCooperative getHousingCooperative(String address) {
 		HousingCooperative hc = null;
 		if(address.isEmpty() || address != null)
@@ -58,7 +58,7 @@ public class HousingCooperativeServiceImp implements HousingCooperativeService{
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.Service.impl.HousingCooperativeService#removeHousingCooperative(com.myProjects.HousingRecord.Domain.HousingCooperative)
 	 */
-	@Override
+
 	public void removeHousingCooperative(HousingCooperative cooperative) {
 		hcDAO.removeHousingCooperative(cooperative);
 	}
