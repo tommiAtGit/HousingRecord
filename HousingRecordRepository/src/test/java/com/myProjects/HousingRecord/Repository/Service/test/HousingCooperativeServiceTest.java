@@ -2,8 +2,13 @@ package com.myProjects.HousingRecord.Repository.Service.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.List;
+
+import javax.validation.constraints.AssertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -46,9 +51,28 @@ public class HousingCooperativeServiceTest {
 
 	@Test
 	public void testGetHousingCooperatives() {
+		int expectedcount = 2;
 		HousingCooperative ActualHc = null;
-		HousingCooperative ExpectedHc = this.createFirstHousingCooperative();
+		HousingCooperative firstExpectedHc = this.createFirstHousingCooperative();
+		HousingCooperative secondExpectedHc = this.createSecondHousingCooperative();
 		
+		ActualHc = hcService.addHousingCooperative(firstExpectedHc);
+		assertNotNull(ActualHc);
+		assertTrue("uups", ActualHc.getId() >=1 );
+		assertEquals(firstExpectedHc.getName(), ActualHc.getName());
+		
+		ActualHc = hcService.addHousingCooperative(secondExpectedHc);
+		assertNotNull(ActualHc);
+		assertTrue("uups", ActualHc.getId() >=1 );
+		assertEquals(secondExpectedHc.getName(), ActualHc.getName());
+		
+		List<HousingCooperative> hcList = null;
+		
+		hcList = hcService.getHousingCooperatives();
+		assertNotNull(hcList);
+		assertEquals(expectedcount, hcList.size());
+		assertEquals(firstExpectedHc.getName(), hcList.get(0).getName());
+		assertEquals(secondExpectedHc.getName(), hcList.get(1).getName());
 		
 	}
 
@@ -73,7 +97,18 @@ public class HousingCooperativeServiceTest {
 
 	@Test
 	public void testRemoveHousingCooperative() {
-		fail("Not yet implemented");
+		HousingCooperative ActualHc = null;
+		HousingCooperative ExpectedHc = this.createFirstHousingCooperative();
+		
+		ActualHc = hcService.addHousingCooperative(ExpectedHc);
+		assertNotNull(ActualHc);
+		assertTrue("uups", ActualHc.getId() >=1 );
+		assertEquals(ExpectedHc.getName(), ActualHc.getName());
+		
+		HousingCooperative aHC = null;
+		hcService.removeHousingCooperative(ActualHc);
+		aHC = hcService.getHousingCooperative(ExpectedHc.getAddress());
+		assertNull(aHC);
 	}
 	
 	private HousingCooperative createFirstHousingCooperative() {

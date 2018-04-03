@@ -50,7 +50,8 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 	public List<HousingCooperative> getHousingCooperatives() {
 		
 		List<HousingCooperative> housingCooperativeList = null;
-		Query q = em.createQuery("SELECT h FROM HousingCooperative");
+		Query q = em.createQuery("FROM HousingCooperative");
+												
 		
 		try {
 			housingCooperativeList = q.getResultList();	
@@ -71,7 +72,8 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 		HousingCooperative hc=null;
 		if (!address.isEmpty() || !(address==null)) {
 			
-			Query q  = em.createQuery("Select hc From HousingCooperative h where h.address = :address");
+			Query q  = em.createQuery("Select h From HousingCooperative h where h.address = :address");
+			q.setParameter("address", address);
 			try {
 				hc  = (HousingCooperative) q.getSingleResult();	
 			}
