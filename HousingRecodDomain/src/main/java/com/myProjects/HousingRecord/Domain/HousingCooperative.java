@@ -30,7 +30,7 @@ public class HousingCooperative implements Serializable {
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="id",unique = true, nullable = false)
 	public long getId() {
 		return id;
 	}
