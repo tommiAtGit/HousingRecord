@@ -67,9 +67,22 @@ public class HousingApartmentDAOImpl extends DAOBase implements HousingApartment
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.DAO.HousingApartmentDAO#getHousingApartments(com.myProjects.HousingRecord.Domain.HousingCooperative)
 	 */
+	@SuppressWarnings("unchecked")
 	public List<HousingApartment> getHousingApartments(HousingCooperative housingCooperative){
 		List<HousingApartment> haList = null;
 		
+		if (housingCooperative != null) {
+			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInfo i JOIN h.housingCooperative j where h.housingCooperative = :housingCooperative");
+			q.setParameter("housingCooperative", housingCooperative);
+			try {
+				haList = (List<HousingApartment>) q.getResultList();
+			}
+			catch(Exception ex) {
+				//TODO: Replace me with some kind of logging
+				System.out.println(this.getClass().getName() + "-- getHousingApartments(): Error occured: " + ex.getMessage());
+				ex.printStackTrace(); 
+			}
+		}
 		return haList;
 	}
 	
@@ -78,7 +91,18 @@ public class HousingApartmentDAOImpl extends DAOBase implements HousingApartment
 	 */
 	public HousingApartment getUserHousingApartment(UserInformation userInfo) {
 		HousingApartment hA = null;
-		
+		if (userInfo != null) {
+			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInfo i JOIN h.housingCooperative j where h.userInfo = :userInfo");
+			q.setParameter("userInfo", userInfo);
+			try {
+				hA = (HousingApartment) q.getSingleResult();
+			}
+			catch(Exception ex) {
+				//TODO: Replace me with some kind of logging
+				System.out.println(this.getClass().getName() + "-- getHousingApartments(): Error occured: " + ex.getMessage());
+				ex.printStackTrace(); 
+			}
+		}
 		return hA;
 	}
 	
