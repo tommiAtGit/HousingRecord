@@ -24,8 +24,12 @@ public class HousingApartmentDAOImpl extends DAOBase implements HousingApartment
 		if (housingApartment != null) {
 			try {
 				
-				em.getTransaction().begin();
-				em.persist(housingApartment);
+				if(!em.getTransaction().isActive()) {
+					em.getTransaction().begin();
+				}
+				
+				//em.persist(housingApartment);
+				em.merge(housingApartment);
 				em.getTransaction().commit();
 				//em.close();
 				
@@ -50,7 +54,7 @@ public class HousingApartmentDAOImpl extends DAOBase implements HousingApartment
 	public HousingApartment getHousingApartment(String apartment){
 		HousingApartment hA = null;
 		if (!apartment.isEmpty() || !(apartment==null)) {
-			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInfo i JOIN h.housingCooperative j where h.apartment = :apartment");
+			Query q  = em.createQuery("From HousingApartment h JOIN h.userInformation i JOIN h.housingCooperative j where h.apartment = :apartment");
 			q.setParameter("apartment", apartment);
 			try {
 				hA = (HousingApartment) q.getSingleResult();	
@@ -72,7 +76,7 @@ public class HousingApartmentDAOImpl extends DAOBase implements HousingApartment
 		List<HousingApartment> haList = null;
 		
 		if (housingCooperative != null) {
-			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInfo i JOIN h.housingCooperative j where h.housingCooperative = :housingCooperative");
+			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInformation i JOIN h.housingCooperative j where h.housingCooperative = :housingCooperative");
 			q.setParameter("housingCooperative", housingCooperative);
 			try {
 				haList = (List<HousingApartment>) q.getResultList();
@@ -92,8 +96,8 @@ public class HousingApartmentDAOImpl extends DAOBase implements HousingApartment
 	public HousingApartment getUserHousingApartment(UserInformation userInfo) {
 		HousingApartment hA = null;
 		if (userInfo != null) {
-			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInfo i JOIN h.housingCooperative j where h.userInfo = :userInfo");
-			q.setParameter("userInfo", userInfo);
+			Query q  = em.createQuery("Select h From HousingApartment h JOIN h.userInformation i JOIN h.housingCooperative j where h.userInformation = :userInfo");
+			q.setParameter("userInformation", userInfo);
 			try {
 				hA = (HousingApartment) q.getSingleResult();
 			}

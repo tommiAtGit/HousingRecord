@@ -40,6 +40,9 @@ private HousingApartmentDAO haDAO;
 		
 		if(haName.isEmpty() || haName != null){
 			hA = haDAO.getHousingApartment(haName);
+			if (hA != null) {
+				return hA;
+			}
 		}
 		return hA;
 	}

@@ -6,7 +6,8 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.myProjects.HousingRecord.Domain.UserAddress</class>
 		<class>com.myProjects.HousingRecord.Domain.UserInformation</class>
-		<class>com.myProjects.HousingRecord.Domain.HousingCooperative</class>		
+		<class>com.myProjects.HousingRecord.Domain.HousingCooperative</class>	
+		<class>com.myProjects.HousingRecord.Domain.HousingApartment</class>	
 		<properties>
 			<!-- Configuring The Database Connection Details -->
 			 <property name="RuntimeUnenhancedClasses" value="supported"/>
@@ -25,6 +26,7 @@
 		<class>com.myProjects.HousingRecord.Domain.UserAddress</class>
 		<class>com.myProjects.HousingRecord.Domain.UserInformation</class>
 		<class>com.myProjects.HousingRecord.Domain.HousingCooperative</class>		
+		<class>com.myProjects.HousingRecord.Domain.HousingApartment</class>
 		<properties>
 			 <property name="RuntimeUnenhancedClasses" value="supported"/>
       		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>

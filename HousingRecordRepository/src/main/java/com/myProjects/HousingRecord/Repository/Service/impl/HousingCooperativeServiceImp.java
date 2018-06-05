@@ -62,4 +62,5 @@ public class HousingCooperativeServiceImp implements HousingCooperativeService{
 	public void removeHousingCooperative(HousingCooperative cooperative) {
 		hcDAO.removeHousingCooperative(cooperative);
 	}
+	
 }

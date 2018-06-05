@@ -30,18 +30,19 @@ public class HousingCooperativeDAOImpl extends DAOBase implements HousingCoopera
 			}
 			catch(Exception ex) {
 				//TODO: Replace me with some kind of logging
-				System.out.println(this.getClass().getName() + "-- addUser(): Error occured: " + ex.getMessage());
+				System.out.println(this.getClass().getName() + "-- addHousingCooperative(): Error occured: " + ex.getMessage());
 				ex.printStackTrace();
 				
 			}
 			return cooperative;
 		}
 		else {
-			System.out.println(this.getClass().getName() + ": Error occured: UserAddress is null");
+			System.out.println(this.getClass().getName() + ": Error occured: HousingCooperative is null");
 			return null;
 		}
 	    
 	}
+	
 	/* (non-Javadoc)
 	 * @see com.myProjects.HousingRecord.Repository.DAO.HousingCooperativeDAO#getHousingCooperatives()
 	 */
