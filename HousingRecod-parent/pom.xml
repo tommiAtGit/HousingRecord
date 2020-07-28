@@ -11,6 +11,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>14</java.version>
+	 <maven.compiler.source>7</maven.compiler.source>
+    <maven.compiler.target>7</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -22,30 +25,7 @@
     	<scope>test</scope>
 	</dependency>
      <!-- Spring dependency -->
-  	<dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-context</artifactId>
-    	<version>5.0.2.RELEASE</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
-	<dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-core</artifactId>
-    	<version>5.0.2.RELEASE</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
-	<dependency>
-    	<groupId>org.springframework</groupId>
-   		<artifactId>spring-beans</artifactId>
-    	<version>5.0.2.RELEASE</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
-	<dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-tx</artifactId>
-    	<version>5.0.2.RELEASE</version>
-	</dependency>
-
+  	
 </dependencies>
 
   <packaging>pom</packaging>
@@ -53,6 +33,5 @@
   	<module>../HousingRecodDomain</module>
   	<module>../HousingRecordControler</module>
   	<module>../HousingRecordRepository</module>
-  	<module>../HousinRecord_web</module>
   </modules>
 </project>

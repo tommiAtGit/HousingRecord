@@ -4,13 +4,12 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.springframework.transaction.annotation.Transactional;
 
 import com.myProjects.HousingRecord.Domain.UserAddress;
 import com.myProjects.HousingRecord.Domain.UserInformation;
 import com.myProjects.HousingRecord.Repository.DAOIF.UserDao;
 
-@Transactional
+
 public class UserDAOImpl extends DAOBase implements UserDao {
 
 
